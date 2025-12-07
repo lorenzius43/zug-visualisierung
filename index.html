@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interaktive Produkt-Navigation</title>
+
+  <!-- externer Style -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- SCREEN 1: Start – Gesamtprodukt mit Navigations-Knöpfen -->
+  <div class="screen active" id="screen-overview">
+    <img src="C_zug.jpg" alt="Gesamtprodukt" />
+
+    <div
+      class="nav-hotspot"
+      style="top: 30%; left: 40%;"
+      data-target="screen-module1"
+      data-group="Elektrotechnik"
+      title="Modul 1 öffnen"
+    >
+      1
+    </div>
+
+    <div
+      class="nav-hotspot"
+      style="top: 85%; left: 20%;"
+      data-target="screen-module2"
+      data-group="Thermodynamik"
+      title="Modul 2 öffnen"
+    >
+      2
+    </div>
+
+    <div
+      class="nav-hotspot"
+      style="top: 95%; left: 35%;"
+      data-target="screen-module3"
+      data-group="Maschinenelemente"
+      title="Modul 3 öffnen"
+    >
+      3
+    </div>
+
+    <div
+      class="nav-hotspot"
+      style="top: 95%; left: 85%;"
+      data-target="screen-module4"
+      data-group="Elektrotechnik"
+      title="Modul 4 öffnen"
+    >
+      4
+    </div>
+  </div>
+
+  <!-- SCREEN 2: Detail-Seite Modul 1 -->
+  <div class="screen" id="screen-module1">
+    <button class="back-button" data-target="screen-overview">Zurück</button>
+    <img src="Innenraum.jpeg" alt="Modul 1 Detailansicht" />
+
+    <div
+      class="info-hotspot"
+      style="top: 35%; left: 30%;"
+      data-group="gruppe1"
+      data-text="Modul 1 – Bereich A: Hier befindet sich die Sensoreinheit mit hoher Auflösung."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 65%; left: 55%;"
+      data-group="gruppe2"
+      data-text="Modul 1 – Bereich B: Anschlussklemmen für die Spannungsversorgung (24 V DC)."
+    ></div>
+  </div>
+
+  <!-- SCREEN 3: Detail-Seite Modul 2 -->
+  <div class="screen" id="screen-module2">
+    <button class="back-button" data-target="screen-overview">Zurück</button>
+    <img src="Unterbau.jpg" alt="Modul 2 Detailansicht" />
+
+    <div
+      class="info-hotspot"
+      style="top: 40%; left: 45%;"
+      data-group="Elektrotechnik"
+      data-text="Batterien"
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 50%; left: 15%;"
+      data-group="Thermodynamik"
+      data-text="Wärmetauscher"
+    ></div>
+  </div>
+
+  <!-- SCREEN 4: Detail-Seite Modul 3 -->
+  <div class="screen" id="screen-module3">
+    <button class="back-button" data-target="screen-overview">Zurück</button>
+    <img src="Drehgestell.jpg" alt="Modul 3 Detailansicht" />
+
+    <div
+      class="info-hotspot"
+      style="top: 40%; left: 45%;"
+      data-group="gruppe2"
+      data-text="Modul 3 – Bereich: Anbindung des Fahrwerks an die restliche Struktur."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 70%; left: 30%;"
+      data-group="gruppe3"
+      data-text="Modul 3 – Service-Bereich: Zugangspunkte für Inspektion und Wartung."
+    ></div>
+  </div>
+
+  <!-- SCREEN 5: Detail-Seite Modul 4 -->
+  <div class="screen" id="screen-module4">
+    <button class="back-button" data-target="screen-overview">Zurück</button>
+    <img src="Front.jpg" alt="Modul 4 Detailansicht" />
+
+    <div
+      class="info-hotspot"
+      style="top: 30%; left: 75%;"
+      data-group="gruppe1"
+      data-text="Antenne"
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 70%; left: 60%;"
+      data-group="Thermodynamik"
+      data-text="Heizung, Klimaanlage"
+    ></div>
+  </div>
+
+  <!-- EIN gemeinsamer Tooltip für alle Detail-Seiten -->
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Filter-Panel links -->
+  <div class="filter-panel">
+    <div class="filter-title">Filter:</div>
+    <button class="filter-btn active" data-filter="all">Alle</button>
+    <button class="filter-btn" data-filter="Maschinenelemente">Maschinenelemente</button>
+    <button class="filter-btn" data-filter="Thermodynamik">Thermodynamik</button>
+    <button class="filter-btn" data-filter="Elektrotechnik">Elektrotechnik</button>
+  </div>
+
+</div>
+
+<!-- externer JS-Code -->
+<script src="script.js"></script>
+</body>
+</html>
