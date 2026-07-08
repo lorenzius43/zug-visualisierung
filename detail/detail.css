@@ -1,0 +1,471 @@
+/* Detailseiten & Übersichtsseite für einzelne Bauteile.
+   Helles Theme, angelehnt an die Gestaltung der Hochschule München
+   (hm.edu): Koralle (#FC5555) als Hauptakzent, Blau (#3D46D9) für Links. */
+
+:root {
+  --hm-coral: #fc5555;
+  --hm-coral-dark: #c6383f;
+  --hm-blue: #3d46d9;
+  --ink: #1a1a1a;
+  --ink-soft: #4a4a4a;
+  --border: #e4e4e7;
+  --surface: #f7f7f8;
+}
+
+/* styles.css setzt html,body auf overflow:hidden + height:100% für die
+   Ein-Bildschirm-App. Die Detailseiten sollen aber normal scrollen können -
+   ohne diese Überschreibung wird jeder Inhalt unterhalb der ersten
+   Bildschirmhöhe unsichtbar abgeschnitten (nicht nur unscrollbar). */
+html {
+  overflow: auto;
+  height: auto;
+  min-height: 100%;
+}
+
+.detail-body {
+  overflow: auto;
+  height: auto;
+  background: #ffffff;
+  position: relative;
+}
+
+/* Farbakzent-Leiste oben, konsistent mit der interaktiven Ansicht */
+.detail-body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--hm-coral), var(--hm-blue));
+  z-index: 100;
+}
+
+.detail-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 30px 20px 60px;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.detail-back {
+  display: inline-block;
+  color: var(--hm-blue);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.detail-back:hover {
+  text-decoration: underline;
+}
+
+.detail-back-bottom {
+  margin-top: 32px;
+}
+
+.detail-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  margin-top: 32px;
+}
+
+.detail-hero {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.detail-hero img {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-hero-caption {
+  font-size: 13px;
+  color: #777;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+.detail-page h1 {
+  margin-top: 24px;
+  font-size: 28px;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.detail-screen-label {
+  color: #777;
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+.detail-modules {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.module-chip {
+  background: rgba(252, 85, 85, 0.08);
+  border: 1px solid rgba(252, 85, 85, 0.35);
+  color: var(--hm-coral-dark);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.detail-lead {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 20px 0;
+  color: var(--ink);
+}
+
+.detail-page p {
+  margin: 14px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.detail-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.detail-gallery figure {
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.detail-gallery img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.detail-gallery figcaption {
+  padding: 8px 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+.detail-sources {
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.detail-sources h2 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: var(--ink);
+}
+
+.detail-sources ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detail-sources a {
+  color: var(--hm-blue);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.detail-sources a:hover {
+  text-decoration: underline;
+}
+
+/* Übersichtsseite (Glossar aller Bauteile) */
+.detail-page-wide {
+  max-width: 900px;
+}
+
+.glossary-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 20px 0 8px;
+  position: sticky;
+  top: 12px;
+  z-index: 5;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(4px);
+  padding: 8px 0;
+}
+
+.filter-chip {
+  border: 1px solid var(--border);
+  background: #fff;
+  color: var(--ink);
+  font-size: 12px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filter-chip:hover {
+  border-color: var(--hm-coral);
+}
+
+.filter-chip.active {
+  background: var(--hm-coral);
+  border-color: var(--hm-coral);
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.glossary-empty {
+  color: #777;
+  font-style: italic;
+  margin: 24px 0;
+}
+
+.glossary-group {
+  margin-top: 36px;
+}
+
+.glossary-group h2 {
+  font-size: 20px;
+  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 8px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.glossary-group-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--hm-blue);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.glossary-group-link:hover {
+  text-decoration: underline;
+}
+
+.glossary-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.glossary-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: #333;
+  transition: border-color 0.15s, background 0.15s, transform 0.15s;
+}
+
+.glossary-item:hover {
+  border-color: var(--hm-coral);
+  background: #fff;
+  transform: translateY(-1px);
+}
+
+.glossary-item-title {
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.glossary-item-lead {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.4;
+}
+
+.glossary-item-modules {
+  font-size: 11px;
+  color: var(--hm-coral-dark);
+  margin-top: 2px;
+}
+
+/* Studiengang-Übersichtsseite */
+.detail-page h2 {
+  font-size: 19px;
+  margin: 32px 0 12px;
+  color: var(--ink);
+}
+
+.detail-page em {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.fact-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fact-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+}
+
+.fact-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.semester-list {
+  list-style: none;
+  margin: 16px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.semester-list li {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 14px;
+  padding: 12px 0;
+  border-top: 1px solid var(--border);
+  font-size: 15px;
+  color: #333;
+}
+
+.semester-list li:first-child {
+  border-top: none;
+}
+
+.semester-num {
+  font-weight: 700;
+  color: var(--hm-coral-dark);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+@media (max-width: 520px) {
+  .semester-list li {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+.schwerpunkt-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+
+.schwerpunkt-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+}
+
+.schwerpunkt-card h3 {
+  font-size: 15px;
+  color: var(--hm-coral-dark);
+  margin-bottom: 10px;
+}
+
+.schwerpunkt-card ul {
+  padding-left: 18px;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.6;
+}
+
+.mapping-table-wrap {
+  overflow-x: auto;
+  margin: 16px 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.mapping-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.mapping-table th {
+  text-align: left;
+  background: var(--surface);
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #666;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.mapping-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: #333;
+  vertical-align: top;
+}
+
+.mapping-table tr:last-child td {
+  border-bottom: none;
+}
+
+.mapping-table td:first-child {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.mapping-note {
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+}

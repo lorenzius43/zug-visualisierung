@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Alle Bauteile – U-Bahn Übersicht</title>
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="detail/detail.css" />
+</head>
+<body class="detail-body">
+<div class="detail-page detail-page-wide">
+  <a class="detail-back" href="index.html">&larr; Zurück zur interaktiven Ansicht</a>
+
+  <h1>Alle Bauteile</h1>
+  <p class="detail-lead">Diese Liste fasst alle 21 Bauteile zusammen, die im interaktiven Modell als Hotspots hinterlegt sind – gruppiert nach der Seite, auf der sie zu finden sind. Jeder Eintrag verlinkt direkt zur vertieften Detailseite.</p>
+
+  <div class="glossary-filter" id="glossary-filter">
+    <button class="filter-chip active" data-filter="all">Alle</button>
+    <button class="filter-chip" data-filter="etechnik">E-Technik, ELA</button>
+    <button class="filter-chip" data-filter="informatik">Informatik</button>
+    <button class="filter-chip" data-filter="konstruktion">Konstruktion, Produktentwicklung</button>
+    <button class="filter-chip" data-filter="mechanik">Technische Mechanik</button>
+    <button class="filter-chip" data-filter="werkstoffe">Werkstoffkunde, Fertigungstechnik</button>
+    <button class="filter-chip" data-filter="thermo">Strömungsmechanik, Thermodynamik, Wärmeübertragung</button>
+    <button class="filter-chip" data-filter="maschinenelemente">Maschinenelemente</button>
+    <button class="filter-chip" data-filter="regelungstechnik">Regelungstechnik, Messtechnik</button>
+    <button class="filter-chip" data-filter="bwl">BWL</button>
+  </div>
+
+  <section class="glossary-group">
+    <h2>Innenraum <a class="glossary-group-link" href="index.html#screen-module1">im Modell ansehen &rarr;</a></h2>
+    <ul class="glossary-list">
+      <li>
+        <a class="glossary-item" href="detail/fahrgastinformationssystem.html" data-modules="etechnik,informatik">
+          <span class="glossary-item-title">Dynamisches Fahrgastinformationssystem</span>
+          <span class="glossary-item-lead">Die Displays im Fahrgastraum zeigen Liniennummer, nächste Haltestelle und Anschlussinformationen in Echtzeit an.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Informatik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/sitzausstattung.html" data-modules="konstruktion,werkstoffe">
+          <span class="glossary-item-title">Sitzausstattung</span>
+          <span class="glossary-item-lead">Ergonomisch geformte, gepolsterte Sitzschalen mit Haltestangen aus Edelstahl. Die Reihenbestuhlung an den Wagenenden maximiert die Stehplatzkapazität für einen schnellen Fahrgastwechsel.</span>
+          <span class="glossary-item-modules">Konstruktion, Produktentwicklung · Werkstoffkunde, Fertigungstechnik</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="glossary-group">
+    <h2>Unterbau <a class="glossary-group-link" href="index.html#screen-module2">im Modell ansehen &rarr;</a></h2>
+    <ul class="glossary-list">
+      <li>
+        <a class="glossary-item" href="detail/batterien.html" data-modules="etechnik,bwl">
+          <span class="glossary-item-title">Batterien (Hilfsbatterien)</span>
+          <span class="glossary-item-lead">24-V-DC-Hilfsbatterien versorgen Bordsysteme wie den Bordcomputer, die Innenraumbeleuchtung und die Türsteuerung – nicht jedoch den Fahrantrieb, der über die Stromschiene gespeist wird.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · BWL</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/waermetauscher.html" data-modules="werkstoffe,thermo">
+          <span class="glossary-item-title">Wärmetauscher</span>
+          <span class="glossary-item-lead">Nimmt die Abwärme aus mechanischem Bremsen, den Wirkungsgradverlusten des E-Motors und der Beleuchtung auf und gibt sie an die Umgebung ab.</span>
+          <span class="glossary-item-modules">Werkstoffkunde, Fertigungstechnik · Strömungsmechanik, Thermodynamik, Wärmeübertragung</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/kompressor.html" data-modules="thermo,regelungstechnik">
+          <span class="glossary-item-title">Kompressor</span>
+          <span class="glossary-item-lead">Baut den Systemdruck für Luftfeder und Bremsanlage auf – während der Fahrt ca. 8,6 bar, für die Bremsen werden mindestens 5 bar benötigt.</span>
+          <span class="glossary-item-modules">Strömungsmechanik, Thermodynamik, Wärmeübertragung · Regelungstechnik, Messtechnik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/drucklufttank.html" data-modules="etechnik,thermo">
+          <span class="glossary-item-title">Drucklufttanks</span>
+          <span class="glossary-item-lead">Speichern die vom Kompressor erzeugte Druckluft zwischen, stellen sie bei Bedarf schnell bereit und fangen Drucküberschüsse ab, sodass der Kompressor nicht ständig takten muss.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Strömungsmechanik, Thermodynamik, Wärmeübertragung</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="glossary-group">
+    <h2>Drehgestell <a class="glossary-group-link" href="index.html#screen-module3">im Modell ansehen &rarr;</a></h2>
+    <ul class="glossary-list">
+      <li>
+        <a class="glossary-item" href="detail/gelenkige-lagerung.html" data-modules="mechanik,maschinenelemente">
+          <span class="glossary-item-title">Gelenkige Lagerung</span>
+          <span class="glossary-item-lead">Anbindung des Drehgestells an den Wagenkasten über die Luftfeder. Sie überträgt die Gewichtskraft senkrecht zur Erdbeschleunigung sowie den Kraftfluss in Fahrtrichtung vom Drehgestell auf den Wagen.</span>
+          <span class="glossary-item-modules">Technische Mechanik · Maschinenelemente</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/radreifen.html" data-modules="werkstoffe,mechanik,bwl">
+          <span class="glossary-item-title">Radreifen</span>
+          <span class="glossary-item-lead">Dreiteiliger Aufbau aus Felge, Gummifederung und Radreifen (Laufring). Da sich der Raddurchmesser durch Abrieb im Betrieb verringert, wird das Rad regelmäßig nachgeschliffen (Reprofilierung).</span>
+          <span class="glossary-item-modules">Werkstoffkunde, Fertigungstechnik · Technische Mechanik · BWL</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/luftfeder.html" data-modules="informatik,regelungstechnik,maschinenelemente">
+          <span class="glossary-item-title">Luftfeder</span>
+          <span class="glossary-item-lead">Gummikonusfeder mit Druckluftpolster zwischen Drehgestell und Wagenkasten. Aufgabe: Federung des Wagenkastens und automatische Niveauregelung bei wechselnder Zuladung.</span>
+          <span class="glossary-item-modules">Informatik · Regelungstechnik, Messtechnik · Maschinenelemente</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/bremse.html" data-modules="konstruktion,werkstoffe,regelungstechnik,maschinenelemente">
+          <span class="glossary-item-title">Bremse – elektrisch &amp; mechanisch</span>
+          <span class="glossary-item-lead">Im Regelfall bremst der Antriebsmotor elektrisch als Generator; steht kein abnehmender Zug zur Verfügung, übernimmt die mechanische Bremse die Verzögerung.</span>
+          <span class="glossary-item-modules">Konstruktion, Produktentwicklung · Werkstoffkunde, Fertigungstechnik · Regelungstechnik, Messtechnik · Maschinenelemente</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/stossdaempfer.html" data-modules="werkstoffe,mechanik">
+          <span class="glossary-item-title">Stoßdämpfer</span>
+          <span class="glossary-item-lead">Enthält ein weiches Metallelement als Energieabsorber. Bei einem starken Stoß verformt sich das Metall plastisch, wodurch Sicherungs-Pins ausgestoßen werden – das löst einen Alarm aus, der den Austausch des Dämpferelements anzeigt.</span>
+          <span class="glossary-item-modules">Werkstoffkunde, Fertigungstechnik · Technische Mechanik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/getriebe.html" data-modules="maschinenelemente,mechanik">
+          <span class="glossary-item-title">Verbindung zum Getriebe</span>
+          <span class="glossary-item-lead">Kraftschlüssige Keilwellenverbindung zwischen Motor und Getriebe. Zentrierbohrung, Freistich und Werkzeugauslauf erleichtern die Fertigung; eine Nut nimmt das Sicherungsblech auf, das die Verbindung axial sichert.</span>
+          <span class="glossary-item-modules">Maschinenelemente · Technische Mechanik</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="glossary-group">
+    <h2>Front <a class="glossary-group-link" href="index.html#screen-module4">im Modell ansehen &rarr;</a></h2>
+    <ul class="glossary-list">
+      <li>
+        <a class="glossary-item" href="detail/antenne.html" data-modules="etechnik,informatik">
+          <span class="glossary-item-title">Antenne</span>
+          <span class="glossary-item-lead">Ermöglicht die Funkkommunikation mit der Betriebsleitstelle – u. a. zur Zugsicherung, Standortübermittlung und Übertragung der Fahrgastinformationsdaten. Montiert auf dem Dach am Wagenende.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Informatik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/klimaanlage-fahrerkabine.html" data-modules="etechnik,thermo">
+          <span class="glossary-item-title">Heizung/Klimaanlage Fahrerkabine</span>
+          <span class="glossary-item-lead">Klimatisiert ausschließlich den Führerstand. Der Fahrgastraum bleibt unklimatisiert, da eine Nachrüstung für den gesamten Innenraum technisch aufwendig wäre (Platz-, Gewichts- und Energiebedarf).</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Strömungsmechanik, Thermodynamik, Wärmeübertragung</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/wassertank-brandschutz.html" data-modules="etechnik,thermo">
+          <span class="glossary-item-title">Wassertank Brandschutzsystem</span>
+          <span class="glossary-item-lead">Die Wassertanks der Löschanlage müssen frostfrei bleiben und werden daher elektrisch beheizt, damit das Wasser im Brandfall jederzeit einsatzbereit ist.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Strömungsmechanik, Thermodynamik, Wärmeübertragung</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/kupplung.html" data-modules="konstruktion,maschinenelemente">
+          <span class="glossary-item-title">Kupplung</span>
+          <span class="glossary-item-lead">Automatische Kupplung zum Verbinden zweier Wagen. Neben der Zug-/Druckkraftübertragung werden hier auch elektrische Leitungen (Steuer- und Energieversorgung) sowie Druckluftleitungen zwischen den Einheiten gekoppelt.</span>
+          <span class="glossary-item-modules">Konstruktion, Produktentwicklung · Maschinenelemente</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="glossary-group">
+    <h2>Führerstand <a class="glossary-group-link" href="index.html#screen-fahrerkabine">im Modell ansehen &rarr;</a></h2>
+    <ul class="glossary-list">
+      <li>
+        <a class="glossary-item" href="detail/nothalt.html" data-modules="etechnik,regelungstechnik">
+          <span class="glossary-item-title">Nothalt</span>
+          <span class="glossary-item-lead">Rote Not-Aus-Taste im Führerstand. Bei Betätigung wird eine Zwangsbremsung ausgelöst und der Fahrbetrieb sofort unterbrochen – auch im automatisierten Fahrbetrieb.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Regelungstechnik, Messtechnik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/geschwindigkeitsanzeige.html" data-modules="etechnik,regelungstechnik">
+          <span class="glossary-item-title">Geschwindigkeitsanzeige</span>
+          <span class="glossary-item-lead">Analoge Tachoanzeige bis 100 km/h. Ein Hinweisschild am Bedienpult verweist auf das Softwareupdate „AP 2020“ für die automatische Zugsteuerung des Fahrzeugs.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Regelungstechnik, Messtechnik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/statusbildschirme.html" data-modules="informatik,etechnik">
+          <span class="glossary-item-title">Statusbildschirme</span>
+          <span class="glossary-item-lead">Zeigen dem Fahrer bzw. der Automatiksteuerung Systemzustände, Streckensignale und Diagnosemeldungen an. Die Münchner U-Bahn kann auf Teilstrecken automatisiert fahren, wobei der Fahrer die Aufsicht behält.</span>
+          <span class="glossary-item-modules">Informatik · E-Technik, ELA</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/bedienfeld.html" data-modules="etechnik,informatik">
+          <span class="glossary-item-title">Bedienfeld</span>
+          <span class="glossary-item-lead">Farbig codierte Tasten für die Betriebsarten, u. a. „Automatik betriebsbereit“, „Automatik Kehrfahrt“, „Systemwechsel“ und „Rangierfahrt“, sowie Störungsmeldungen wie „Störung Strecke“ und „Zwangsbremse Fahrsperre/Automatik“.</span>
+          <span class="glossary-item-modules">E-Technik, ELA · Informatik</span>
+        </a>
+      </li>
+      <li>
+        <a class="glossary-item" href="detail/fahrbremshebel.html" data-modules="maschinenelemente,regelungstechnik">
+          <span class="glossary-item-title">Fahr-/Bremshebel</span>
+          <span class="glossary-item-lead">Ein einzelner Hebel steuert sowohl Beschleunigung als auch Bremsung (Totmann-Bedienung). Der Fahrer muss ihn dauerhaft in einer aktiven Stellung halten – lässt er los, leitet das System automatisch eine Bremsung ein.</span>
+          <span class="glossary-item-modules">Maschinenelemente · Regelungstechnik, Messtechnik</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <p class="glossary-empty" id="glossary-empty" hidden>Keine Bauteile für dieses Modul auf dieser Seite.</p>
+
+  <a class="detail-back detail-back-bottom" href="index.html">&larr; Zurück zur interaktiven Ansicht</a>
+</div>
+
+<script>
+(() => {
+  const filterButtons = document.querySelectorAll("#glossary-filter .filter-chip");
+  const items = document.querySelectorAll(".glossary-item");
+  const groups = document.querySelectorAll(".glossary-group");
+
+  function applyFilter(filter) {
+    items.forEach((item) => {
+      const modules = (item.dataset.modules || "").split(",");
+      item.closest("li").hidden = !(filter === "all" || modules.includes(filter));
+    });
+    groups.forEach((group) => {
+      const visibleCount = group.querySelectorAll("li:not([hidden])").length;
+      group.hidden = visibleCount === 0;
+    });
+  }
+
+  filterButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      applyFilter(btn.dataset.filter);
+    });
+  });
+})();
+</script>
+</body>
+</html>

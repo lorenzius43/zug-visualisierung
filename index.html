@@ -11,17 +11,65 @@
 <body>
 
 <div id="app">
+  <!-- Persistente Buttons oben rechts: immer sichtbar, unabhängig vom aktiven Screen -->
+  <div class="top-actions">
+    <button class="top-action-btn" data-target="screen-intro">Info</button>
+    <a class="top-action-btn" href="studiengang.html">Studiengang</a>
+    <a class="top-action-btn" href="uebersicht.html">Alle Bauteile</a>
+    <button class="top-action-btn" data-target="screen-links">Links</button>
+  </div>
+
+  <!-- SCREEN 0: Intro – Kontext & Kurzanleitung -->
+  <div class="screen active" id="screen-intro">
+    <div class="intro-page">
+      <h1>Interaktive U-Bahn – Fakultät 03</h1>
+      <p class="intro-lead">
+        Dieses Projekt der Fakultät 03 (Maschinenbau, Fahrzeugtechnik, Flugzeugtechnik) der
+        Hochschule München ordnet dem Bachelorstudiengang <strong>Sustainable Engineering</strong>
+        ein exemplarisches Produkt zu – hier eine U-Bahn (MVG-Baureihe C2) – und verknüpft
+        möglichst viele Studienmodule mit realen Bauteilen. Die technischen Inhalte wurden bei
+        einem Werkstattbesuch vor Ort recherchiert und fotografiert.
+      </p>
+
+      <h2>So funktioniert's</h2>
+      <ol class="intro-steps">
+        <li><strong>Blaue, nummerierte Punkte</strong> auf dem Übersichtsbild öffnen eine Detailansicht des jeweiligen Fahrzeugbereichs.</li>
+        <li><strong>Gelbe Punkte</strong> auf den Detailbildern zeigen eine Infokarte zum Bauteil – teils mit Foto und einem „Mehr erfahren“-Link zu einer vertieften Seite mit weiteren Bildern und Quellen.</li>
+        <li>Das <strong>Filter-Panel</strong> links blendet Bauteile nach Studienmodul ein/aus.</li>
+        <li>Unter <strong>„Alle Bauteile“</strong> oben rechts findet sich eine vollständige Liste aller 21 Bauteile als Direktlinks, unter <strong>„Studiengang“</strong> die Zuordnung der Filter-Module zu den echten Modulen des Studiengangs.</li>
+      </ol>
+
+      <h2>Studienmodule im Projekt</h2>
+      <div class="detail-modules intro-modules">
+        <span class="module-chip">E-Technik, ELA</span>
+        <span class="module-chip">Informatik</span>
+        <span class="module-chip">Konstruktion, Produktentwicklung</span>
+        <span class="module-chip">Technische Mechanik</span>
+        <span class="module-chip">Werkstoffkunde, Fertigungstechnik</span>
+        <span class="module-chip">Strömungsmechanik, Thermodynamik, Wärmeübertragung</span>
+        <span class="module-chip">Maschinenelemente</span>
+        <span class="module-chip">Regelungstechnik, Messtechnik</span>
+        <span class="module-chip">BWL</span>
+      </div>
+
+      <div class="intro-actions">
+        <button class="intro-cta" data-target="screen-overview">Zur interaktiven Ansicht →</button>
+        <a class="intro-cta intro-cta-secondary" href="studiengang.html">Über den Studiengang</a>
+        <a class="intro-cta intro-cta-secondary" href="uebersicht.html">Alle Bauteile auf einen Blick</a>
+      </div>
+    </div>
+  </div>
 
   <!-- SCREEN 1: Start – Gesamtprodukt mit Navigations-Knöpfen -->
-  <div class="screen active" id="screen-overview">
+  <div class="screen" id="screen-overview">
     <img src="C_zug.jpg" alt="Gesamtprodukt" />
 
     <div
       class="nav-hotspot"
       style="top: 30%; left: 40%;"
       data-target="screen-module1"
-      data-group="Elektrotechnik"
-      title="Modul 1 öffnen"
+      data-group="etechnik,informatik,konstruktion,werkstoffe"
+      title="Innenraum öffnen"
     >
       1
     </div>
@@ -30,8 +78,8 @@
       class="nav-hotspot"
       style="top: 85%; left: 20%;"
       data-target="screen-module2"
-      data-group="Thermodynamik"
-      title="Modul 2 öffnen"
+      data-group="etechnik,bwl,werkstoffe,thermo,regelungstechnik"
+      title="Unterbau öffnen"
     >
       2
     </div>
@@ -40,8 +88,8 @@
       class="nav-hotspot"
       style="top: 95%; left: 35%;"
       data-target="screen-module3"
-      data-group="Maschinenelemente"
-      title="Modul 3 öffnen"
+      data-group="mechanik,maschinenelemente,werkstoffe,bwl,informatik,regelungstechnik,konstruktion,thermo,etechnik"
+      title="Drehgestell öffnen"
     >
       3
     </div>
@@ -50,104 +98,281 @@
       class="nav-hotspot"
       style="top: 95%; left: 85%;"
       data-target="screen-module4"
-      data-group="Elektrotechnik"
-      title="Modul 4 öffnen"
+      data-group="etechnik,informatik,thermo,konstruktion,maschinenelemente"
+      title="Front öffnen"
     >
       4
     </div>
+
+    <div
+      class="nav-hotspot"
+      style="top: 35%; left: 78%;"
+      data-target="screen-fahrerkabine"
+      data-group="etechnik,regelungstechnik,informatik,maschinenelemente"
+      title="Führerstand öffnen"
+    >
+      5
+    </div>
   </div>
 
-  <!-- SCREEN 2: Detail-Seite Modul 1 -->
+  <!-- SCREEN 2: Detail-Seite Innenraum -->
   <div class="screen" id="screen-module1">
     <button class="back-button" data-target="screen-overview">Zurück</button>
-    <img src="Innenraum.jpeg" alt="Modul 1 Detailansicht" />
+    <img src="Innenraum.jpeg" alt="Innenraum Detailansicht" />
 
     <div
       class="info-hotspot"
-      style="top: 35%; left: 30%;"
-      data-group="gruppe1"
-      data-text="Modul 1 – Bereich A: Hier befindet sich die Sensoreinheit mit hoher Auflösung."
+      style="top: 10%; left: 50%;"
+      data-group="etechnik,informatik"
+      data-detail="detail/fahrgastinformationssystem.html"
+      data-text="Dynamisches Fahrgastinformationssystem: Die Displays zeigen Liniennummer, nächste Haltestelle und Anschlussinformationen in Echtzeit an. Die Daten werden über das Bordnetz aus der Zugsteuerung eingespeist."
     ></div>
 
     <div
       class="info-hotspot"
-      style="top: 65%; left: 55%;"
-      data-group="gruppe2"
-      data-text="Modul 1 – Bereich B: Anschlussklemmen für die Spannungsversorgung (24 V DC)."
+      style="top: 78%; left: 22%;"
+      data-group="konstruktion,werkstoffe"
+      data-img="assets/sitzausstattung.jpg"
+      data-detail="detail/sitzausstattung.html"
+      data-text="Sitzausstattung: Ergonomisch geformte, gepolsterte Sitzschalen mit Haltestangen aus Edelstahl. Die Reihenbestuhlung an den Wagenenden maximiert die Stehplatzkapazität für einen schnellen Fahrgastwechsel."
     ></div>
   </div>
 
-  <!-- SCREEN 3: Detail-Seite Modul 2 -->
+  <!-- SCREEN 3: Detail-Seite Unterbau -->
   <div class="screen" id="screen-module2">
     <button class="back-button" data-target="screen-overview">Zurück</button>
-    <img src="Unterbau.jpg" alt="Modul 2 Detailansicht" />
+    <img src="Unterbau.jpg" alt="Unterbau Detailansicht" />
 
     <div
       class="info-hotspot"
       style="top: 40%; left: 45%;"
-      data-group="Elektrotechnik"
-      data-text="Batterien"
+      data-group="etechnik,bwl"
+      data-img="assets/batterien.jpg"
+      data-detail="detail/batterien.html"
+      data-text="Batterien: 24-V-DC-Hilfsbatterien versorgen Bordsysteme wie den Bordcomputer, die Innenraumbeleuchtung und die Türsteuerung – nicht jedoch den Fahrantrieb, der über die Stromschiene gespeist wird. Jedes Modul trägt einen eigenen QR-Code zur Wartungsverfolgung und ein Datum der letzten Prüfung."
     ></div>
 
     <div
       class="info-hotspot"
-      style="top: 50%; left: 15%;"
-      data-group="Thermodynamik"
-      data-text="Wärmetauscher"
+      style="top: 50%; left: 24%;"
+      data-group="werkstoffe,thermo"
+      data-detail="detail/waermetauscher.html"
+      data-text="Wärmetauscher: Nimmt die Abwärme aus mechanischem Bremsen, den Wirkungsgradverlusten des E-Motors und der Beleuchtung auf und gibt sie an die Umgebung ab. Pilotprojekte (z. B. Paris, London) nutzen diese Abwärme bereits zum Heizen von Wohnhäusern – in Paris versorgt sie ein Gebäude mit 20 Wohnungen."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 28%; left: 65%;"
+      data-group="thermo,regelungstechnik"
+      data-img="assets/kompressor.jpg"
+      data-detail="detail/kompressor.html"
+      data-text="Kompressor: Baut den Systemdruck für Luftfeder und Bremsanlage auf – während der Fahrt ca. 8,6 bar, für die Bremsen werden mindestens 5 bar benötigt. Steigt die Fahrgastzahl stark an (z. B. am Hauptbahnhof), sinkt der Druck durch den Mehrbedarf der Luftfedern; reicht er nicht mehr für die Bremse, muss der Zug bis zu 2 Minuten warten, bis nachgeladen ist."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 22%; left: 84%;"
+      data-group="etechnik,thermo"
+      data-img="assets/drucklufttank.jpg"
+      data-detail="detail/drucklufttank.html"
+      data-text="Drucklufttanks: Speichern die vom Kompressor erzeugte Druckluft zwischen, stellen sie bei Bedarf schnell bereit und fangen Drucküberschüsse ab, sodass der Kompressor nicht ständig takten muss. Ein Manometer am Tank zeigt den aktuellen Systemdruck an."
     ></div>
   </div>
 
-  <!-- SCREEN 4: Detail-Seite Modul 3 -->
+  <!-- SCREEN 4: Detail-Seite Drehgestell -->
   <div class="screen" id="screen-module3">
     <button class="back-button" data-target="screen-overview">Zurück</button>
-    <img src="Drehgestell.jpg" alt="Modul 3 Detailansicht" />
+    <img src="Drehgestell.jpg" alt="Drehgestell Detailansicht" />
 
     <div
       class="info-hotspot"
-      style="top: 40%; left: 45%;"
-      data-group="gruppe2"
-      data-text="Modul 3 – Bereich: Anbindung des Fahrwerks an die restliche Struktur."
-    ></div>
-
-    <div
-      class="info-hotspot"
-      style="top: 70%; left: 30%;"
-      data-group="gruppe3"
-      data-text="Modul 3 – Service-Bereich: Zugangspunkte für Inspektion und Wartung."
-    ></div>
-  </div>
-
-  <!-- SCREEN 5: Detail-Seite Modul 4 -->
-  <div class="screen" id="screen-module4">
-    <button class="back-button" data-target="screen-overview">Zurück</button>
-    <img src="Front.jpg" alt="Modul 4 Detailansicht" />
-
-    <div
-      class="info-hotspot"
-      style="top: 30%; left: 75%;"
-      data-group="gruppe1"
-      data-text="Antenne"
+      style="top: 20%; left: 58%;"
+      data-group="mechanik,maschinenelemente"
+      data-detail="detail/gelenkige-lagerung.html"
+      data-text="Gelenkige Lagerung: Anbindung des Drehgestells an den Wagenkasten über die Luftfeder. Sie überträgt die Gewichtskraft senkrecht zur Erdbeschleunigung sowie den Kraftfluss in Fahrtrichtung vom Drehgestell auf den Wagen."
     ></div>
 
     <div
       class="info-hotspot"
       style="top: 70%; left: 60%;"
-      data-group="Thermodynamik"
-      data-text="Heizung, Klimaanlage"
+      data-group="werkstoffe,mechanik,bwl"
+      data-img="assets/radreifen.jpg"
+      data-detail="detail/radreifen.html"
+      data-text="Radreifen: Dreiteiliger Aufbau aus Felge, Gummifederung und Radreifen (Laufring). Da sich der Raddurchmesser durch Abrieb im Betrieb verringert, wird das Rad in der Werkstatt auf einer Unterflurdrehmaschine regelmäßig nachgeschliffen (Reprofilierung), um die Rundheit wiederherzustellen und den Durchmesser innerhalb eines Radsatzes anzugleichen."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 14%; left: 32%;"
+      data-group="informatik,regelungstechnik,maschinenelemente"
+      data-img="assets/luftfeder.jpg"
+      data-detail="detail/luftfeder.html"
+      data-text="Luftfeder: Gummikonusfeder mit Druckluftpolster zwischen Drehgestell und Wagenkasten. Aufgabe: Federung des Wagenkastens und automatische Niveauregelung bei wechselnder Zuladung. Zusätzlich als „Barometer“ genutzt: Der Luftdruck wird alle 2 Sekunden gemessen und erlaubt eine Abschätzung der Fahrgastzahl – bei einem Fußballspiel wurden so schon bis zu 100 t Zusatzgewicht registriert."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 45%; left: 24%;"
+      data-group="konstruktion,werkstoffe,regelungstechnik,maschinenelemente"
+      data-img="assets/bremse.jpg"
+      data-detail="detail/bremse.html"
+      data-text="Bremse – elektrisch & mechanisch: Im Regelfall bremst der Antriebsmotor elektrisch als Generator; die erzeugte Spannung wird in den Fahrdraht desselben Streckenabschnitts eingespeist, z. B. für einen anfahrenden Zug an der nächsten Haltestelle. Steht kein abnehmender Zug zur Verfügung, übernimmt die mechanische Bremse (Bremszange mit Belag auf der belüfteten Bremsscheibe) die Verzögerung. Kann die Bremsenergie nicht ins Netz zurückgespeist werden, wird sie stattdessen über einen Bremswiderstand (z. B. 160 kW Nennleistung bei 1200 V DC) in Wärme umgewandelt."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 33%; left: 78%;"
+      data-group="werkstoffe,mechanik"
+      data-detail="detail/stossdaempfer.html"
+      data-text="Stoßdämpfer: Enthält ein weiches Metallelement als Energieabsorber. Bei einem starken Stoß verformt sich das Metall plastisch, wodurch Sicherungs-Pins ausgestoßen werden – das löst einen Alarm aus, der den Austausch des Dämpferelements anzeigt."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 62%; left: 40%;"
+      data-group="maschinenelemente,mechanik"
+      data-img="assets/getriebe.jpg"
+      data-detail="detail/getriebe.html"
+      data-text="Verbindung zum Getriebe: Kraftschlüssige Keilwellenverbindung zwischen Motor und Getriebe. Zentrierbohrung, Freistich und Werkzeugauslauf erleichtern die Fertigung; eine Nut nimmt das Sicherungsblech auf, das die Verbindung axial sichert."
+    ></div>
+  </div>
+
+  <!-- SCREEN 5: Detail-Seite Front -->
+  <div class="screen" id="screen-module4">
+    <button class="back-button" data-target="screen-overview">Zurück</button>
+    <img src="Front.jpg" alt="Front Detailansicht" />
+
+    <div
+      class="info-hotspot"
+      style="top: 10%; left: 68%;"
+      data-group="etechnik,informatik"
+      data-detail="detail/antenne.html"
+      data-text="Antenne: Ermöglicht die Funkkommunikation mit der Betriebsleitstelle – u. a. zur Zugsicherung, Standortübermittlung und Übertragung der Fahrgastinformationsdaten. Montiert auf dem Dach am Wagenende."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 70%; left: 60%;"
+      data-group="etechnik,thermo"
+      data-img="assets/sicherungskasten.jpg"
+      data-detail="detail/klimaanlage-fahrerkabine.html"
+      data-text="Heizung/Klimaanlage Fahrerkabine: Klimatisiert ausschließlich den Führerstand. Der Fahrgastraum bleibt unklimatisiert, da eine Nachrüstung für den gesamten Innenraum technisch aufwendig wäre (Platz-, Gewichts- und Energiebedarf). Im Sicherungskasten des Führerstands sind eigene Stromkreise für „Klimagerät FST“ und „Fussheizung“ separat abgesichert."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 45%; left: 30%;"
+      data-group="etechnik,thermo"
+      data-detail="detail/wassertank-brandschutz.html"
+      data-text="Wassertank Brandschutzsystem: Die Wassertanks der Löschanlage müssen frostfrei bleiben und werden daher elektrisch beheizt, damit das Wasser im Brandfall jederzeit einsatzbereit ist."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 68%; left: 45%;"
+      data-group="konstruktion,maschinenelemente"
+      data-detail="detail/kupplung.html"
+      data-text="Kupplung: Automatische Kupplung zum Verbinden zweier Wagen. Neben der Zug-/Druckkraftübertragung werden hier auch elektrische Leitungen (Steuer- und Energieversorgung) sowie Druckluftleitungen zwischen den Einheiten gekoppelt."
+    ></div>
+  </div>
+
+  <!-- SCREEN 6: Detail-Seite Führerstand -->
+  <div class="screen" id="screen-fahrerkabine">
+    <button class="back-button" data-target="screen-overview">Zurück</button>
+    <img src="assets/fuehrerstand.jpg" alt="Führerstand Detailansicht" />
+
+    <div
+      class="info-hotspot"
+      style="top: 41%; left: 91%;"
+      data-group="etechnik,regelungstechnik"
+      data-detail="detail/nothalt.html"
+      data-text="Nothalt: Rote Not-Aus-Taste im Führerstand. Bei Betätigung wird eine Zwangsbremsung ausgelöst und der Fahrbetrieb sofort unterbrochen – auch im automatisierten Fahrbetrieb."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 53%; left: 64%;"
+      data-group="etechnik,regelungstechnik"
+      data-detail="detail/geschwindigkeitsanzeige.html"
+      data-text="Geschwindigkeitsanzeige: Analoge Tachoanzeige bis 100 km/h. Ein Hinweisschild am Bedienpult verweist auf das Softwareupdate „AP 2020“ für die automatische Zugsteuerung des Fahrzeugs."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 58%; left: 38%;"
+      data-group="informatik,etechnik"
+      data-detail="detail/statusbildschirme.html"
+      data-text="Statusbildschirme: Zeigen dem Fahrer bzw. der Automatiksteuerung Systemzustände, Streckensignale und Diagnosemeldungen an. Die Münchner U-Bahn kann auf Teilstrecken automatisiert fahren, wobei der Fahrer die Aufsicht behält."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 88%; left: 28%;"
+      data-group="etechnik,informatik"
+      data-detail="detail/bedienfeld.html"
+      data-text="Bedienfeld: Farbig codierte Tasten für die Betriebsarten, u. a. „Automatik betriebsbereit“, „Automatik Kehrfahrt“, „Systemwechsel“ und „Rangierfahrt“, sowie Störungsmeldungen wie „Störung Strecke“ und „Zwangsbremse Fahrsperre/Automatik“."
+    ></div>
+
+    <div
+      class="info-hotspot"
+      style="top: 83%; left: 49%;"
+      data-group="maschinenelemente,regelungstechnik"
+      data-detail="detail/fahrbremshebel.html"
+      data-text="Fahr-/Bremshebel: Ein einzelner Hebel steuert sowohl Beschleunigung als auch Bremsung (Totmann-Bedienung). Der Fahrer muss ihn dauerhaft in einer aktiven Stellung halten – lässt er los, leitet das System automatisch eine Bremsung ein."
     ></div>
   </div>
 
   <!-- EIN gemeinsamer Tooltip für alle Detail-Seiten -->
-  <div id="tooltip" class="tooltip"></div>
-
-  <!-- Filter-Panel links -->
-  <div class="filter-panel">
-    <div class="filter-title">Filter:</div>
-    <button class="filter-btn active" data-filter="all">Alle</button>
-    <button class="filter-btn" data-filter="Maschinenelemente">Maschinenelemente</button>
-    <button class="filter-btn" data-filter="Thermodynamik">Thermodynamik</button>
-    <button class="filter-btn" data-filter="Elektrotechnik">Elektrotechnik</button>
+  <div id="tooltip" class="tooltip">
+    <img id="tooltip-img" class="tooltip-img" alt="" />
+    <div id="tooltip-text" class="tooltip-text"></div>
+    <a id="tooltip-link" class="tooltip-link" href="#" target="_blank" rel="noopener">Mehr erfahren →</a>
   </div>
+
+  <!-- Filter-Panel links: Module aus der Systemdefinition.pdf -->
+  <div class="filter-panel">
+    <div class="filter-title">Filter (Module):</div>
+    <button class="filter-btn active" data-filter="all">Alle</button>
+    <button class="filter-btn" data-filter="etechnik" title="E-Technik, ELA">E-Technik, ELA</button>
+    <button class="filter-btn" data-filter="informatik" title="Informatik">Informatik</button>
+    <button class="filter-btn" data-filter="konstruktion" title="Konstruktion, Produktentwicklung">Konstruktion</button>
+    <button class="filter-btn" data-filter="mechanik" title="Technische Mechanik">Techn. Mechanik</button>
+    <button class="filter-btn" data-filter="werkstoffe" title="Werkstoffkunde, Fertigungstechnik">Werkstoffe/Fertigung</button>
+    <button class="filter-btn" data-filter="thermo" title="Strömungsmechanik, Thermodynamik, Wärmeübertragung">Strömung/Thermo</button>
+    <button class="filter-btn" data-filter="maschinenelemente" title="Maschinenelemente">Maschinenelemente</button>
+    <button class="filter-btn" data-filter="regelungstechnik" title="Regelungstechnik, Messtechnik">Regelung/Messtechnik</button>
+    <button class="filter-btn" data-filter="bwl" title="BWL">BWL</button>
+  </div>
+
+  <!-- SCREEN 7: Externe Links -->
+<div class="screen" id="screen-links">
+
+  <button class="back-button" data-target="screen-overview">
+    Zurück
+  </button>
+
+  <div class="links-page">
+    <h1>Nützliche Links</h1>
+
+    <button onclick="window.open('https://moodle.hm.edu/enrol/index.php?id=12672')">
+      Maschinenelemente
+    </button>
+
+    <button onclick="window.open('https://moodle.hm.edu/course/view.php?id=24208')">
+      Fluidtechnik
+    </button>
+
+    <button onclick="window.open('https://moodle.hm.edu/course/view.php?id=11827')">
+      Regelungstechnik
+    </button>
+
+    <a href="Systemdefinition.pdf" download>
+    <button>
+      Systemdefinition U-Bahn
+    </button>
+  </a>
+  </div>
+</div>
 
 </div>
 

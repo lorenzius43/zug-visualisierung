@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", () => {
   const screens = document.querySelectorAll(".screen");
   const tooltip = document.getElementById("tooltip");
+  const tooltipImg = document.getElementById("tooltip-img");
+  const tooltipText = document.getElementById("tooltip-text");
+  const tooltipLink = document.getElementById("tooltip-link");
   const infoHotspots = document.querySelectorAll(".info-hotspot");
   const navHotspots = document.querySelectorAll(".nav-hotspot");
 
@@ -10,11 +13,19 @@ document.addEventListener("DOMContentLoaded", () => {
     tooltip.classList.remove("visible");
   }
 
-  function showScreen(id) {
+  const validScreenIds = new Set(Array.from(screens).map((s) => s.id));
+
+  // updateHash: false beim initialen Laden (sonst würde jeder Deep-Link
+  // sofort einen zusätzlichen, identischen History-Eintrag erzeugen)
+  function showScreen(id, updateHash = true) {
+    if (!validScreenIds.has(id)) return;
     screens.forEach((screen) => {
       screen.classList.toggle("active", screen.id === id);
     });
     hideTooltip();
+    if (updateHash && location.hash.slice(1) !== id) {
+      history.pushState({ screen: id }, "", "#" + id);
+    }
   }
 
   // Navigation: Start-Screen-Knöpfe + Zurück-Buttons
@@ -28,24 +39,91 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Deep-Link beim Laden: #screen-module3 in der URL öffnet direkt den Screen
+  const initialHash = location.hash.slice(1);
+  if (validScreenIds.has(initialHash)) {
+    showScreen(initialHash, false);
+  }
+
+  // Vor/Zurück-Buttons des Browsers respektieren
+  window.addEventListener("popstate", () => {
+    const hash = location.hash.slice(1);
+    showScreen(validScreenIds.has(hash) ? hash : "screen-intro", false);
+  });
+
   // Info-Hotspots auf Detail-Seiten
+  const TOOLTIP_MARGIN = 12;
+
+  function positionTooltip(hotspot) {
+    const screen = hotspot.closest(".screen");
+    const screenRect = screen.getBoundingClientRect();
+    const hotspotRect = hotspot.getBoundingClientRect();
+
+    // Zuerst sichtbar machen, damit die tatsächliche Größe gemessen werden kann
+    tooltip.classList.add("visible");
+    const tooltipRect = tooltip.getBoundingClientRect();
+
+    const hotspotCenterX = hotspotRect.left - screenRect.left + hotspotRect.width / 2;
+    const hotspotTop = hotspotRect.top - screenRect.top;
+    const hotspotBottom = hotspotRect.bottom - screenRect.top;
+
+    // Horizontal: am Hotspot zentrieren, aber innerhalb des Bildschirms halten
+    let left = hotspotCenterX - tooltipRect.width / 2;
+    const maxLeft = screenRect.width - tooltipRect.width - TOOLTIP_MARGIN;
+    left = Math.max(TOOLTIP_MARGIN, Math.min(left, maxLeft));
+
+    // Vertikal: bevorzugt oberhalb des Hotspots, sonst darunter, sonst geklemmt
+    let top = hotspotTop - tooltipRect.height - TOOLTIP_MARGIN;
+    if (top < TOOLTIP_MARGIN) {
+      top = hotspotBottom + TOOLTIP_MARGIN;
+    }
+    const maxTop = screenRect.height - tooltipRect.height - TOOLTIP_MARGIN;
+    top = Math.max(TOOLTIP_MARGIN, Math.min(top, maxTop));
+
+    tooltip.style.left = left + "px";
+    tooltip.style.top = top + "px";
+  }
+
+  let activeHotspot = null;
+
   infoHotspots.forEach((hotspot) => {
     hotspot.addEventListener("click", (e) => {
       e.stopPropagation();
 
-      const text = hotspot.dataset.text || "Keine Beschreibung hinterlegt.";
-      const screen = hotspot.closest(".screen");
+      tooltipText.textContent = hotspot.dataset.text || "Keine Beschreibung hinterlegt.";
 
-      tooltip.textContent = text;
+      if (hotspot.dataset.img) {
+        tooltipImg.src = hotspot.dataset.img;
+        tooltipImg.style.display = "block";
+      } else {
+        tooltipImg.removeAttribute("src");
+        tooltipImg.style.display = "none";
+      }
 
-      const hotspotRect = hotspot.getBoundingClientRect();
-      const screenRect = screen.getBoundingClientRect();
+      if (hotspot.dataset.detail) {
+        tooltipLink.href = hotspot.dataset.detail;
+        tooltipLink.style.display = "inline-block";
+      } else {
+        tooltipLink.removeAttribute("href");
+        tooltipLink.style.display = "none";
+      }
 
-      tooltip.style.left = hotspotRect.left - screenRect.left + "px";
-      tooltip.style.top = hotspotRect.top - screenRect.top - 10 + "px";
-
-      tooltip.classList.add("visible");
+      activeHotspot = hotspot;
+      positionTooltip(hotspot);
     });
+  });
+
+  // Bei Größenänderung (z. B. Fenster verkleinert) sichtbaren Tooltip neu positionieren,
+  // damit er nicht außerhalb des Bildschirms landet
+  window.addEventListener("resize", () => {
+    if (activeHotspot && tooltip.classList.contains("visible")) {
+      positionTooltip(activeHotspot);
+    }
+  });
+
+  // Klick auf den Tooltip selbst soll ihn nicht schließen (z. B. um Text zu markieren)
+  tooltip.addEventListener("click", (e) => {
+    e.stopPropagation();
   });
 
   // Klick irgendwo anders schließt den Tooltip
